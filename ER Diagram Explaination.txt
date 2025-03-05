@@ -1,0 +1,57 @@
+Explain the ER Diagram. 
+We have used dbdiagram.io to create relationships between table.
+We have 10 tables: 
+1. Prod information (prod)
+2. Sales Transactions (transactions)
+3. Calender details (clnd)
+4. Inventory Locations (invloc)
+5. Point of sales (possite)
+6. Pricing States (pricestate)
+7. Retail locations (rtlloc)
+8. Inventory status (invstatus)
+9.Holiday references (hldy)
+10. Average cost tracking (average cost)
+
+Each table has a primary key and foreign key referring to other tables.
+Table relationships and their meanings.
+1) Transactions and related tables.
+ Transactions is the central table that connects it to the other tables.
+It connects to-->
+prod --> Using sku_id (For product sold in the transaction)
+clnd --> using fscldt_id (Fiscal date of the transaction)
+possite --> using pos_site_id (Point of sale side where transaction occurred)
+pricestate --> using price_substate_id (price state available for id)
+averagecost --> using fscldt_id (to find the average cost for transactions occurred)
+
+2)Prod table:
+prod contains product information.
+sku_id is the primary key.
+It is linked to transactions via sku_id.
+
+3) Calender date (clnd)
+fscldt_id is the primary key. The table shows fiscal date including weekly quarterly etc
+
+4)Pricing state table(pricestate)
+substate_id is the primary key.This stores different pricing categories (e.g., discounts, special pricing).
+It allows transactions to be categorized based on price adjustments.
+
+5) Inventory Location Table(invloc)
+loc is the primary key. Stores details about inventory location. 
+Useful for tracking stock levels by location.
+
+6)POS Point of Sale POS Table:
+site_id is the primary key.
+Stores details of pos sites where transactions occurred.
+
+7) Retail location table (rtlloc)
+str is the primary key. Stores information about retail stores.
+
+8) Holiday table:
+hldy_id is the primary key. Stores information about holidays.
+
+9) Inventory Status Table (invstatus)
+code_id is the primary key. Stores details about inventory stock categories.
+
+10) Average cost table (averagecost):
+sku_id is the primary key. Stores average costs per sku over time.
+
